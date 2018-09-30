@@ -4,12 +4,10 @@ public class RoomSpawner : MonoBehaviour
 {
     public int openingDirection;
 
-
     private RoomTemplates templates;
     private int rand;
     private bool isSpawned = false;
     private bool isStartSpawned = false;
-    private Vector3 testVect = Vector3.zero;
 
 
     private void Start()
@@ -24,7 +22,7 @@ public class RoomSpawner : MonoBehaviour
     {
         if (!isStartSpawned && openingDirection == 0)
         {
-            Instantiate(templates.startRoom[0], transform.position, templates.startRoom[0].transform.rotation);
+            Instantiate(templates.startRoom, transform.position, templates.startRoom.transform.rotation);
 
             isStartSpawned = true;
         }
@@ -65,7 +63,8 @@ public class RoomSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider spawnPointCollider)
     {
-        if (spawnPointCollider.CompareTag("Spawn Point") && spawnPointCollider.GetComponent<RoomSpawner>().isSpawned == true)
+        if (spawnPointCollider.CompareTag("Spawn Point") && spawnPointCollider.GetComponent<RoomSpawner>().isSpawned == true
+            || spawnPointCollider.CompareTag("Spawn Point") && spawnPointCollider.GetComponent<RoomSpawner>().isStartSpawned == true)
         {
             Destroy(gameObject);
         }
