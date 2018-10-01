@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+//TODO: if this looks like a path we want to go, need to add more rooms and more rules for spawning them
+//TODO: build a method to destroy all the spawn points once the level is finished building
 public class RoomSpawner : MonoBehaviour
 {
     public int openingDirection;
@@ -7,64 +9,84 @@ public class RoomSpawner : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     private bool isSpawned = false;
-    private bool isStartSpawned = false;
-
+    //private float buildTime;
 
     private void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke("genStartRoom", .1f);
-        Invoke("Spawn", .2f);
+        Invoke("RoomSpawn", .1f);
     }
 
 
-    private void genStartRoom()
+    private void RoomSpawn()
     {
-        if (!isStartSpawned && openingDirection == 0)
+        if (!isSpawned && openingDirection == 0)
         {
             Instantiate(templates.startRoom, transform.position, templates.startRoom.transform.rotation);
-
-            isStartSpawned = true;
+            //buildTime += Time.deltaTime;
         }
-        
-    }
-
-
-    private void Spawn()
-    {
-        if (!isSpawned)
+        else if (isSpawned == false)
         {
-            if (openingDirection == 1)
+            if (openingDirection == 5)
+            {
+                isSpawned = true;
+                return;
+            }
+            else if (openingDirection == 1)
             {
                 rand = Random.Range(0, templates.bottomRooms.Length);
-                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                Invoke("GenBottomRooms", .05f);
+                isSpawned = true;
             }
             else if (openingDirection == 2)
             {
                 rand = Random.Range(0, templates.topRooms.Length);
-                Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+                Invoke("GenTopRooms", .1f);
+                isSpawned = true;
             }
             else if (openingDirection == 3)
             {
                 rand = Random.Range(0, templates.leftRooms.Length);
-                Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+                Invoke("GenLeftRooms", .15f);
+                isSpawned = true;
             }
             else if (openingDirection == 4)
             {
                 rand = Random.Range(0, templates.rightRooms.Length);
-                Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                Invoke("GenRightRooms", .2f);
+                isSpawned = true;
             }
-
-            isSpawned = true;
         }
+    }
 
+
+    private void GenBottomRooms()
+    {
+        Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+    }
+
+
+    private void GenTopRooms()
+    {
+        Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+    }
+
+
+    private void GenLeftRooms()
+    {
+        Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+    }
+
+
+    private void GenRightRooms()
+    {
+        Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
     }
 
 
     private void OnTriggerEnter(Collider spawnPointCollider)
     {
-        if (spawnPointCollider.CompareTag("Spawn Point") && spawnPointCollider.GetComponent<RoomSpawner>().isSpawned == true
-            || spawnPointCollider.CompareTag("Spawn Point") && spawnPointCollider.GetComponent<RoomSpawner>().isStartSpawned == true)
+        if (spawnPointCollider.CompareTag("Spawn Point") && spawnPointCollider.GetComponent<RoomSpawner>().isSpawned == true)
         {
             Destroy(gameObject);
         }

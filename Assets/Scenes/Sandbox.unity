@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 534669903}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,6 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 640055492}
   - component: {fileID: 640055491}
+  - component: {fileID: 640055493}
   m_Layer: 0
   m_Name: LevelGenerator
   m_TagString: Untagged
@@ -232,6 +233,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &640055493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 640055490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a871e357f4abb274d94a3357b1694ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1049942073834482, guid: f7e87d01ddd03f2458cb6ba2da7c42cb, type: 2}
 --- !u!1 &1651569519
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,31 +274,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startRoom: {fileID: 1338189620611260, guid: 8c1f8f37f3ff13d45891c9c5da895412, type: 2}
   bottomRooms:
-  - {fileID: 1588402307783236, guid: 185f400786419174e84cfb940c668e01, type: 2}
-  - {fileID: 1585678709251164, guid: b82e825caa426894db6a1b4b8d310423, type: 2}
-  - {fileID: 1534705533673938, guid: 7358013df4b3ebf4fb4f3325e0d555b8, type: 2}
-  - {fileID: 1424930264372344, guid: a42781edbd8859143bc11f31ec2fe6a0, type: 2}
+  - {fileID: 1373799929674714, guid: 185f400786419174e84cfb940c668e01, type: 2}
+  - {fileID: 1691646077660046, guid: c30ae993f20bda945b1531a1f91fce9b, type: 2}
+  - {fileID: 1442995152169230, guid: b82e825caa426894db6a1b4b8d310423, type: 2}
+  - {fileID: 1671507368815036, guid: a42781edbd8859143bc11f31ec2fe6a0, type: 2}
   topRooms:
-  - {fileID: 1565504561439064, guid: c60e3f9edd554ff4b90fb9a069450210, type: 2}
-  - {fileID: 1424930264372344, guid: a42781edbd8859143bc11f31ec2fe6a0, type: 2}
-  - {fileID: 1222773829942202, guid: f45378d0eacf6f8408bae57f97706c80, type: 2}
+  - {fileID: 1615020341025950, guid: c60e3f9edd554ff4b90fb9a069450210, type: 2}
+  - {fileID: 1671507368815036, guid: a42781edbd8859143bc11f31ec2fe6a0, type: 2}
+  - {fileID: 1592452842780960, guid: 230b81a146c73734dbf84f14f77eb680, type: 2}
+  - {fileID: 1433531338419486, guid: f45378d0eacf6f8408bae57f97706c80, type: 2}
   leftRooms:
-  - {fileID: 1825244368861890, guid: de702d1ec306272419652f95eeee2bbd, type: 2}
-  - {fileID: 1534705533673938, guid: 7358013df4b3ebf4fb4f3325e0d555b8, type: 2}
-  - {fileID: 1565295561309190, guid: 7e75c85c664febe4bab5a753791d7d82, type: 2}
+  - {fileID: 1691646077660046, guid: c30ae993f20bda945b1531a1f91fce9b, type: 2}
+  - {fileID: 1119168611894376, guid: de702d1ec306272419652f95eeee2bbd, type: 2}
+  - {fileID: 1592452842780960, guid: 230b81a146c73734dbf84f14f77eb680, type: 2}
+  - {fileID: 1607993957416972, guid: 7e75c85c664febe4bab5a753791d7d82, type: 2}
   rightRooms:
-  - {fileID: 1585678709251164, guid: b82e825caa426894db6a1b4b8d310423, type: 2}
-  - {fileID: 1565295561309190, guid: 7e75c85c664febe4bab5a753791d7d82, type: 2}
-  - {fileID: 1524387288044648, guid: 73384caa86c55e04d984b6298f2d0d3c, type: 2}
-  - {fileID: 1222773829942202, guid: f45378d0eacf6f8408bae57f97706c80, type: 2}
+  - {fileID: 1442995152169230, guid: b82e825caa426894db6a1b4b8d310423, type: 2}
+  - {fileID: 1607993957416972, guid: 7e75c85c664febe4bab5a753791d7d82, type: 2}
+  - {fileID: 1347128669348328, guid: 73384caa86c55e04d984b6298f2d0d3c, type: 2}
+  - {fileID: 1433531338419486, guid: f45378d0eacf6f8408bae57f97706c80, type: 2}
 --- !u!4 &1651569521
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1651569519}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.5686865, y: 3.8185673, z: -3.1530194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 640055492}

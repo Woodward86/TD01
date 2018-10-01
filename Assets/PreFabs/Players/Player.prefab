@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114098639161490452}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &114098639161490452
 MonoBehaviour:
@@ -141,7 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f84e4767db8cf489eb014c4beef3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 6
+  cameraSmooth: 1
+  cameraOffset: {x: 0, y: 50, z: 0}
+  walkSpeed: 10
 --- !u!136 &136115503070164046
 CapsuleCollider:
   m_ObjectHideFlags: 1

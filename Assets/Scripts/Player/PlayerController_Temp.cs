@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-
+//TODO: set up camera follow to work with cloned Player
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController_Temp : MonoBehaviour
@@ -8,6 +8,9 @@ public class PlayerController_Temp : MonoBehaviour
 
     protected Rigidbody rb;
     protected Collider coll;
+    Transform mainCamera;
+    public float cameraSmooth = 1.0f;
+    public Vector3 cameraOffset;
 
     public float walkSpeed = 6f;
 
@@ -17,6 +20,7 @@ public class PlayerController_Temp : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         coll = GetComponent<Collider>();
+        mainCamera = Camera.main.transform;
     }
 
 
@@ -35,6 +39,14 @@ public class PlayerController_Temp : MonoBehaviour
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }
 
+        MoveCamera();
+
+    }
+
+
+    void MoveCamera()
+    {
+        mainCamera.position += (transform.position + cameraOffset - mainCamera.position) * cameraSmooth * Time.deltaTime;
     }
 
 
