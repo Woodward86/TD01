@@ -190,119 +190,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &640055490
+--- !u!1 &1445193640
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 640055492}
-  - component: {fileID: 640055491}
-  - component: {fileID: 640055493}
+  - component: {fileID: 1445193643}
+  - component: {fileID: 1445193642}
+  - component: {fileID: 1445193641}
   m_Layer: 0
-  m_Name: LevelGenerator
+  m_Name: Drunkard
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &640055491
+--- !u!114 &1445193641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 640055490}
+  m_GameObject: {fileID: 1445193640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5de8823dfb442946a21b3f45bfca416, type: 3}
+  m_Script: {fileID: 11500000, guid: cb566fcb3a4380f438110e1933ac679b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingDirection: 0
---- !u!4 &640055492
+  floorTilePrefab: {fileID: 1668922770725782, guid: 58fa649f7dd38ba468d6f1ef77b86546,
+    type: 2}
+  floorTileSize: 4
+  size: 25
+--- !u!65 &1445193642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1445193640}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1445193643
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 640055490}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1651569521}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &640055493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 640055490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a871e357f4abb274d94a3357b1694ffd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1049942073834482, guid: f7e87d01ddd03f2458cb6ba2da7c42cb, type: 2}
---- !u!1 &1651569519
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1651569521}
-  - component: {fileID: 1651569520}
-  m_Layer: 0
-  m_Name: Room Templates
-  m_TagString: Rooms
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1651569520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1651569519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4c0702325f0fcf44ad87ecdd6c09ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startRoom: {fileID: 1338189620611260, guid: 8c1f8f37f3ff13d45891c9c5da895412, type: 2}
-  bottomRooms:
-  - {fileID: 1373799929674714, guid: 185f400786419174e84cfb940c668e01, type: 2}
-  - {fileID: 1691646077660046, guid: c30ae993f20bda945b1531a1f91fce9b, type: 2}
-  - {fileID: 1442995152169230, guid: b82e825caa426894db6a1b4b8d310423, type: 2}
-  - {fileID: 1671507368815036, guid: a42781edbd8859143bc11f31ec2fe6a0, type: 2}
-  topRooms:
-  - {fileID: 1615020341025950, guid: c60e3f9edd554ff4b90fb9a069450210, type: 2}
-  - {fileID: 1671507368815036, guid: a42781edbd8859143bc11f31ec2fe6a0, type: 2}
-  - {fileID: 1592452842780960, guid: 230b81a146c73734dbf84f14f77eb680, type: 2}
-  - {fileID: 1433531338419486, guid: f45378d0eacf6f8408bae57f97706c80, type: 2}
-  leftRooms:
-  - {fileID: 1691646077660046, guid: c30ae993f20bda945b1531a1f91fce9b, type: 2}
-  - {fileID: 1119168611894376, guid: de702d1ec306272419652f95eeee2bbd, type: 2}
-  - {fileID: 1592452842780960, guid: 230b81a146c73734dbf84f14f77eb680, type: 2}
-  - {fileID: 1607993957416972, guid: 7e75c85c664febe4bab5a753791d7d82, type: 2}
-  rightRooms:
-  - {fileID: 1442995152169230, guid: b82e825caa426894db6a1b4b8d310423, type: 2}
-  - {fileID: 1607993957416972, guid: 7e75c85c664febe4bab5a753791d7d82, type: 2}
-  - {fileID: 1347128669348328, guid: 73384caa86c55e04d984b6298f2d0d3c, type: 2}
-  - {fileID: 1433531338419486, guid: f45378d0eacf6f8408bae57f97706c80, type: 2}
---- !u!4 &1651569521
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1651569519}
+  m_GameObject: {fileID: 1445193640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 640055492}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
