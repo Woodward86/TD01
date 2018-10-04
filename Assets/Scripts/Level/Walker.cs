@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-//TODO: might need to set this up to move with a Ridgid body so i can move by velocity not just teleport around
+
+
 public class Walker : MonoBehaviour
 {
 
     public GameObject floorTilePrefab;
     public int floorTileSize = 4;
-    public int size = 25;
+    public int size = 100;
+    public int densityPercent = 50;
 
     private int randDir;
     private Vector3[] directions;
-    private bool isSpawned = false;
+    private List<Vector3> prevLocations;
 
 
     private void Start()
@@ -22,42 +26,40 @@ public class Walker : MonoBehaviour
         directions[2] = Vector3.right;
         directions[3] = Vector3.left;
 
-        Instantiate(floorTilePrefab, transform.position, floorTilePrefab.transform.rotation);
-
-        //Invoke("Stumble", 1f);
+        Invoke("Stumble", 0.05f);
     }
 
-    //TODO: needs to be fixed time interval
-    private void Update()
+
+    void Stumble()
     {
-        if (isSpawned == false)
+        prevLocations = new List<Vector3>();
+        prevLocations.Add(transform.position);
+
+        for (int i = 0; i < size; i++)
         {
-            randDir = Random.Range(0, 4);
-            this.transform.position += directions[randDir] * floorTileSize;
-            Instantiate(floorTilePrefab, transform.position, floorTilePrefab.transform.rotation);
+            if (Chance(densityPercent))
+            {
+                randDir = Random.Range(0, 4);
+            }
+
+            transform.position += directions[randDir] * floorTileSize;
+
+            if (!prevLocations.Contains(transform.position))
+            {
+                prevLocations.Add(transform.position);
+            }
+        }
+
+        foreach (Vector3 loc in prevLocations)
+        {
+            Instantiate(floorTilePrefab, loc, floorTilePrefab.transform.rotation);
         }
     }
 
 
-    //void Stumble()
-    //{
-    //    for (int i = 0; i < size; i++)
-    //    {
-    //        if (isSpawned == false)
-    //        {
-    //            randDir = Random.Range(0, 4);
-    //            this.transform.position += directions[randDir] * floorTileSize;
-    //            Instantiate(floorTilePrefab, transform.position, floorTilePrefab.transform.rotation);
-    //        }
-    //    }
-    //}
-
-    //TODO: needs to destroy whatever it collides with
-    private void OnTriggerEnter(Collider other)
+    private bool Chance(int x)
     {
-        if (other.CompareTag("FloorTile"))
-        {
-            isSpawned = true;
-        }
+        return (x >= Random.Range(0, 100));
     }
+
 }

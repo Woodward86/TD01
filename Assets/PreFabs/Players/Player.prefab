@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSmooth: 1
-  cameraOffset: {x: 0, y: 50, z: 0}
+  cameraOffset: {x: 0, y: 30, z: 0}
   walkSpeed: 10
 --- !u!136 &136115503070164046
 CapsuleCollider:

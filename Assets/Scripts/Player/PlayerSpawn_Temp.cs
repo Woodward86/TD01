@@ -10,14 +10,14 @@ public class PlayerSpawn_Temp : MonoBehaviour
     private void Start()
     {
         isStarted = true;
-        Invoke("PlayerSpawn", .11f);
+        Invoke("PlayerSpawn", .1f);
     }
 
     private void PlayerSpawn()
     {
         if(isStarted)
         {
-            Instantiate(player, transform.position, Quaternion.identity);
+            Instantiate(player, player.transform.position, Quaternion.identity);
         }
     }
 
