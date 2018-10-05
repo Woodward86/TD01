@@ -229,6 +229,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114994081291167482, guid: 457f9db9575961e46b660cd8418e0428,
+        type: 2}
+      propertyPath: size
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114994081291167482, guid: 457f9db9575961e46b660cd8418e0428,
+        type: 2}
+      propertyPath: floorTilePrefab
+      value: 
+      objectReference: {fileID: 1373223729633416, guid: 4292241a89ef59f4c8802a4b27738d22,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 457f9db9575961e46b660cd8418e0428, type: 2}
   m_IsPrefabAsset: 0

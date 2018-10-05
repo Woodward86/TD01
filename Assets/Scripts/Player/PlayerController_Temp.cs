@@ -11,6 +11,7 @@ public class PlayerController_Temp : MonoBehaviour
     Transform mainCamera;
     public float cameraSmooth = 1.0f;
     public Vector3 cameraOffset;
+    public Quaternion cameraRotation;
 
     public float walkSpeed = 6f;
 
@@ -47,6 +48,7 @@ public class PlayerController_Temp : MonoBehaviour
     void MoveCamera()
     {
         mainCamera.position += (transform.position + cameraOffset - mainCamera.position) * cameraSmooth * Time.deltaTime;
+        mainCamera.transform.rotation = cameraRotation;
     }
 
 

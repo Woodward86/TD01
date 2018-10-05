@@ -9,74 +9,74 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1373223729633416}
+  m_RootGameObject: {fileID: 1071668968797186}
   m_IsPrefabAsset: 1
---- !u!1 &1373223729633416
+--- !u!1 &1071668968797186
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4383300915821150}
+  - component: {fileID: 4910785993771044}
   m_Layer: 0
-  m_Name: FloorTile
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1476627420657890
+--- !u!1 &1649276103665248
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4168537044587240}
-  - component: {fileID: 33568035729497596}
-  - component: {fileID: 23047717455025990}
-  - component: {fileID: 65808801053231016}
+  - component: {fileID: 4313660877135450}
+  - component: {fileID: 33046272813816252}
+  - component: {fileID: 23437182690188474}
+  - component: {fileID: 65619201854605556}
   m_Layer: 0
-  m_Name: FloorTileGeo
-  m_TagString: FloorTile
+  m_Name: WallGeo
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4168537044587240
+--- !u!4 &4313660877135450
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1476627420657890}
+  m_GameObject: {fileID: 1649276103665248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 4, z: 4}
   m_Children: []
-  m_Father: {fileID: 4383300915821150}
+  m_Father: {fileID: 4910785993771044}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4383300915821150
+--- !u!4 &4910785993771044
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1373223729633416}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 4, y: 1, z: 4}
+  m_GameObject: {fileID: 1071668968797186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4168537044587240}
+  - {fileID: 4313660877135450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23047717455025990
+--- !u!23 &23437182690188474
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1476627420657890}
+  m_GameObject: {fileID: 1649276103665248}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,7 +86,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f4662a8f17803c64684ac25df1ffe0f6, type: 2}
+  - {fileID: 2100000, guid: bf0c31af140cba046b9da9deba1b53aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,19 +106,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33568035729497596
+--- !u!33 &33046272813816252
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1476627420657890}
+  m_GameObject: {fileID: 1649276103665248}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65808801053231016
+--- !u!65 &65619201854605556
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1476627420657890}
+  m_GameObject: {fileID: 1649276103665248}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
