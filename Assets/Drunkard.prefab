@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb566fcb3a4380f438110e1933ac679b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorTilePrefab: {fileID: 1668922770725782, guid: 58fa649f7dd38ba468d6f1ef77b86546,
+  floorTilePrefab: {fileID: 1373223729633416, guid: 4292241a89ef59f4c8802a4b27738d22,
     type: 2}
   wallPrefab: {fileID: 1071668968797186, guid: a9c4070ebbba5084ba453559d03dea05, type: 2}
   floorTileSize: 4

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-//TODO: if this looks like a path we want to go, need to add more rooms and more rules for spawning them
-//TODO: build a method to destroy all the spawn points once the level is finished building
+//TODO: rework this to work with hallways and create more varied rooms
+//(either have varied size in templates or have some prefabs that have no walls so it can organically generate bigger rooms)
+//TODO: build a method to destroy all the spawn points once the level is finished and combine the meshes
 public class RoomSpawner : MonoBehaviour
 {
     public int openingDirection;
@@ -9,7 +10,6 @@ public class RoomSpawner : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     private bool isSpawned = false;
-    //private float buildTime;
 
     private void Start()
     {
@@ -23,7 +23,6 @@ public class RoomSpawner : MonoBehaviour
         if (!isSpawned && openingDirection == 0)
         {
             Instantiate(templates.startRoom, transform.position, templates.startRoom.transform.rotation);
-            //buildTime += Time.deltaTime;
         }
         else if (isSpawned == false)
         {

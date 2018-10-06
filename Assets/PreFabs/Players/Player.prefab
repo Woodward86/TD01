@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 54569269564863642}
   - component: {fileID: 136115503070164046}
   - component: {fileID: 114098639161490452}
+  - component: {fileID: 114559199105581760}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -145,6 +146,18 @@ MonoBehaviour:
   cameraOffset: {x: 0, y: 15, z: -7}
   cameraRotation: {x: 0.43, y: 0, z: 0, w: 0.7071068}
   walkSpeed: 7
+--- !u!114 &114559199105581760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049942073834482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d9b8d58fc46bf4eb6ecc651e42b381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!136 &136115503070164046
 CapsuleCollider:
   m_ObjectHideFlags: 1
