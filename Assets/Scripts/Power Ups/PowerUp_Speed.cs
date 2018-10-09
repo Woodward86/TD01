@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class PowerUp_Health : PowerUp
+public class PowerUp_Speed : PowerUp
 {
 
     private void OnTriggerEnter(Collider other)
@@ -18,14 +18,14 @@ public class PowerUp_Health : PowerUp
         toDestroy = Instantiate(pickupEffect, transform.position, pickupEffect.transform.rotation);
 
         PlayerStats_Temp stats = player.GetComponent<PlayerStats_Temp>();
-        stats.health *= multiplier;
+        stats.walkSpeed *= multiplier;
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
         yield return new WaitForSeconds(duration);
 
-        stats.health /= multiplier;
+        stats.walkSpeed /= multiplier;
 
         Destroy(gameObject);
         Destroy(toDestroy);

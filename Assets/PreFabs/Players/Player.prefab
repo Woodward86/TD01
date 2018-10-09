@@ -21,8 +21,10 @@ GameObject:
   - component: {fileID: 4487675502663822}
   - component: {fileID: 54569269564863642}
   - component: {fileID: 136115503070164046}
+  - component: {fileID: 136769391452355534}
   - component: {fileID: 114098639161490452}
   - component: {fileID: 114559199105581760}
+  - component: {fileID: 114790821016373270}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -145,7 +147,7 @@ MonoBehaviour:
   cameraSmooth: 1
   cameraOffset: {x: 0, y: 15, z: -7}
   cameraRotation: {x: 0.43, y: 0, z: 0, w: 0.7071068}
-  walkSpeed: 7
+  interactColl: {fileID: 136769391452355534}
 --- !u!114 &114559199105581760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,6 +160,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  walkSpeed: 6
+--- !u!114 &114790821016373270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049942073834482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867deaca5debd4546891ee7d058835ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136115503070164046
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -169,5 +183,18 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136769391452355534
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049942073834482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
