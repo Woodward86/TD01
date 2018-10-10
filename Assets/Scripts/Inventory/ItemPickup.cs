@@ -6,11 +6,6 @@ public class ItemPickup : Interactable
     public Item item;
     public Inventory inventory;
 
-    //private void Start()
-    //{
-    //    inventory = GetComponent<Inventory>();
-    //}
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

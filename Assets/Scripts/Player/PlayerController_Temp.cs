@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-//TODO: set up camera follow to work with cloned Player
+
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerStats_Temp))]
