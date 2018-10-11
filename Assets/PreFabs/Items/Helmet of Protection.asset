@@ -8,9 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b1e04ffa586f9c4c8409dc66673a4db, type: 3}
-  m_Name: Test Item
+  m_Script: {fileID: 11500000, guid: 3a845a04f86a4f34d8889cc65e167571, type: 3}
+  m_Name: Helmet of Protection
   m_EditorClassIdentifier: 
   name: Helmet of Protection
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 1985a08a10927794380987d6c7a13c6d, type: 3}
   isDefaultItem: 0
+  equipmentSlot: 0
+  armourModifier: 3
+  damageModifier: 0

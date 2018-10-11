@@ -49,11 +49,11 @@ public class PlayerController_Temp : MonoBehaviour
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             Interact();
         }
-        else if (!Input.GetKeyDown(KeyCode.E))
+        else if (!Input.GetKeyDown(KeyCode.X))
         {
             interactColl.enabled = false;
         }

@@ -12,9 +12,10 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
+
     public bool Add(Item item)
     {
-        if(!item.isDefaultItem)
+        if (!item.isDefaultItem)
         {
             if (items.Count >= space)
             {
@@ -23,6 +24,8 @@ public class Inventory : MonoBehaviour
             }
 
             items.Add(item);
+
+
 
             if (onItemChangedCallback != null)
                 onItemChangedCallback.Invoke();
