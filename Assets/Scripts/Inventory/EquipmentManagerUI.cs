@@ -4,23 +4,26 @@ public class EquipmentManagerUI : MonoBehaviour
 {
 
     public Transform itemsParent;
+    public Transform equipmentsParent;
     public GameObject equipmentManagerUI;
 
     public Inventory inventory;
 
-    InventorySlot[] slots;
+    InventorySlot[] cSlots;
+    InventorySlot[] eSlots;
 
     private void Start()
     {
         inventory.onItemChangedCallback += UpdateUI;
 
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        cSlots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        eSlots = equipmentsParent.GetComponentsInChildren<InventorySlot>();
     }
 
 
     private void Update()
     {
-        if(Input.GetButtonDown("Character Sheet"))
+        if (Input.GetButtonDown("Character Sheet"))
         {
             equipmentManagerUI.SetActive(!equipmentManagerUI.activeSelf);
         }
@@ -29,15 +32,54 @@ public class EquipmentManagerUI : MonoBehaviour
 
     void UpdateUI ()
     {
-        for (int i = 0; i < slots.Length; i++)
+        UpdateEquipmentSlots();
+        UpdateConsumbaleSlots();
+    }
+
+
+    //TODO: The slot the equipment goes to should be dictated by slot name, not a hard coded index
+    void UpdateEquipmentSlots()
+    {
+        for (int e = 0; e < eSlots.Length; e++)
         {
-            if (i < inventory.items.Count)
+            if (e < inventory.currentEquipment.Length && inventory.currentEquipment[e] != null)
             {
-                slots[i].AddItem(inventory.items[i]);
+                if (inventory.currentEquipment[e].equipmentSlot == EquipmentSlotTag.Head)
+                {
+                    eSlots[0].AddItem(inventory.currentEquipment[e]);
+                }
+                if (inventory.currentEquipment[e].equipmentSlot == EquipmentSlotTag.Chest)
+                {
+                    eSlots[1].AddItem(inventory.currentEquipment[e]);
+                }
+                if (inventory.currentEquipment[e].equipmentSlot == EquipmentSlotTag.Legs)
+                {
+                    eSlots[2].AddItem(inventory.currentEquipment[e]);
+                }
+                if (inventory.currentEquipment[e].equipmentSlot == EquipmentSlotTag.Feet)
+                {
+                    eSlots[3].AddItem(inventory.currentEquipment[e]);
+                }
+                if (inventory.currentEquipment[e].equipmentSlot == EquipmentSlotTag.Weapon)
+                {
+                    eSlots[4].AddItem(inventory.currentEquipment[e]);
+                }
+            }
+        }
+    }
+
+
+    void UpdateConsumbaleSlots()
+    {
+        for (int i = 0; i < cSlots.Length; i++)
+        {
+            if (i < inventory.consumables.Count)
+            {
+                cSlots[i].AddItem(inventory.consumables[i]);
             }
             else
             {
-                slots[i].ClearSlot();
+                cSlots[i].ClearSlot();
             }
         }
     }

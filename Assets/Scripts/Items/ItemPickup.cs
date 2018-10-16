@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
-//this only works for Equipment right now not all items
+
 public class ItemPickup : Interactable
 {
-    public Equipment equipment;
-    //public Item item;
+
+    public Item item;
     private Inventory inventory;
-    private EquipmentManager equipmentManager;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,15 +18,13 @@ public class ItemPickup : Interactable
 
     void Pickup(Collider player)
     {
-        Debug.Log("Picking up " + equipment.name);
+        Debug.Log("Picking up " + item.name);
         inventory = player.GetComponent<Inventory>();
-        equipmentManager = player.GetComponent<EquipmentManager>();
 
-        bool wasPickedUp = inventory.Add(equipment);
+        bool wasPickedUp = inventory.Add(item);
 
         if (wasPickedUp)
         {
-            equipmentManager.Equip(equipment);
             Destroy(gameObject);
         }
     }

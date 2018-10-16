@@ -8,12 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a845a04f86a4f34d8889cc65e167571, type: 3}
-  m_Name: Helmet of Fire
+  m_Script: {fileID: 11500000, guid: 3b1e04ffa586f9c4c8409dc66673a4db, type: 3}
+  m_Name: Legs of Speed
   m_EditorClassIdentifier: 
-  name: Helmet of Fire
+  name: Legs of Speed
   icon: {fileID: 0}
+  equipmentSlot: 2
   isDefaultItem: 0
-  equipmentSlot: 0
+  isEquipment: 1
+  isConsumable: 0
   armourModifier: 2
-  damageModifier: 1
+  damageModifier: 3
