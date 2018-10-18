@@ -4,7 +4,7 @@ public class PowerUp : MonoBehaviour
 {
     //settings
     public GameObject pickupEffect;
-    public float multiplier = 1f;
+    public int multiplier = 1;
     public float duration = 5f;
 
     //instance created by power up

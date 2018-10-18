@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Mace of Bashing
   icon: {fileID: 0}
+  preFab: {fileID: 1023491438395212, guid: cb79fe9bede452b4eadf67e1c7275d60, type: 2}
   equipmentSlot: 4
-  isDefaultItem: 0
   isEquipment: 1
   isConsumable: 0
-  armourModifier: 2
-  damageModifier: 3
+  armourModifier: 0
+  damageModifier: 4
+  speedModifier: 0

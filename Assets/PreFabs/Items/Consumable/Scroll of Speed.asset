@@ -9,14 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b1e04ffa586f9c4c8409dc66673a4db, type: 3}
-  m_Name: Chest of Protection
+  m_Name: Scroll of Speed
   m_EditorClassIdentifier: 
-  name: Chest of Protection
-  icon: {fileID: 21300000, guid: 1985a08a10927794380987d6c7a13c6d, type: 3}
-  preFab: {fileID: 1329094156139162, guid: d529555fcbb851846bf562ce197e0352, type: 2}
-  equipmentSlot: 1
-  isEquipment: 1
-  isConsumable: 0
-  armourModifier: 5
+  name: Scroll of Speed
+  icon: {fileID: 0}
+  preFab: {fileID: 1099640036701536, guid: 3a7367a0ddf72d74bb847d95a50a1df3, type: 2}
+  equipmentSlot: 0
+  isEquipment: 0
+  isConsumable: 1
+  isStackable: 0
+  armourModifier: 0
   damageModifier: 0
-  speedModifier: 0
+  speedModifier: 2

@@ -2,7 +2,6 @@
 
 public class EquipmentManagerUI : MonoBehaviour
 {
-
     public Transform itemsParent;
     public Transform equipmentsParent;
     public GameObject equipmentManagerUI;
@@ -83,5 +82,4 @@ public class EquipmentManagerUI : MonoBehaviour
             }
         }
     }
-
 }

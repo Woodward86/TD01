@@ -8,7 +8,7 @@ public class PowerUp_Speed : PowerUp
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine( Pickup(other) );
+            StartCoroutine(Pickup(other));
         }
     }
 
@@ -17,15 +17,15 @@ public class PowerUp_Speed : PowerUp
     {
         toDestroy = Instantiate(pickupEffect, transform.position, pickupEffect.transform.rotation);
 
-        PlayerStats_Temp stats = player.GetComponent<PlayerStats_Temp>();
-        stats.walkSpeed *= multiplier;
+        PlayerStats stats = player.GetComponent<PlayerStats>();
+        stats.walkSpeed.AddMultiplier(multiplier);
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
         yield return new WaitForSeconds(duration);
 
-        stats.walkSpeed /= multiplier;
+        stats.walkSpeed.RemoveMultiplier(multiplier);
 
         Destroy(gameObject);
         Destroy(toDestroy);

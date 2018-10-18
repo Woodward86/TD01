@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Feet of Jumping
   icon: {fileID: 0}
+  preFab: {fileID: 1816775479124086, guid: 5bacbb898557c4849bd219cc71a23153, type: 2}
   equipmentSlot: 3
-  isDefaultItem: 0
   isEquipment: 1
   isConsumable: 0
-  armourModifier: 2
+  armourModifier: 1
   damageModifier: 3
+  speedModifier: 0

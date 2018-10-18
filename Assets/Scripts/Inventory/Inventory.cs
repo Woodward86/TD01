@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
+    public delegate void OnEquipmentChanged(Item newItem, Item oldItem);
+    public OnEquipmentChanged onEquipmentChanged;
 
     //public int space = 9;
 
@@ -38,6 +39,15 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
+    //TODO: When new consumable is picked up and current slots are full, one of the old ones needs to drop
+    public void Remove(Item item)
+    {
+        consumables.Remove(item);
+
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
+    }
+
 
     public void Equip(Item newItem)
     {
@@ -48,22 +58,35 @@ public class Inventory : MonoBehaviour
         if (currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment[slotIndex];
-            //drop oldTtem on the ground by instantiating a copy
-            Debug.Log("Dropping " + oldItem);
+            Unequip(slotIndex);
 
             currentEquipment[slotIndex] = null;
+        }
+
+        if (onEquipmentChanged != null)
+        {
+            onEquipmentChanged.Invoke(newItem, oldItem);
         }
 
         currentEquipment[slotIndex] = newItem;
     }
 
 
-    public void Remove(Item item)
+    public void Unequip(int slotIndex)
     {
-        consumables.Remove(item);
+        if (currentEquipment[slotIndex] != null)
+        {
+            Item oldItem = currentEquipment[slotIndex];
 
-        if (onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
+            Instantiate(oldItem.preFab, transform.position, Quaternion.identity);
+            Debug.Log("Dropping " + oldItem);
+
+            currentEquipment[slotIndex] = null;
+
+            if (onEquipmentChanged != null)
+            {
+                onEquipmentChanged.Invoke(null, oldItem);
+            }
+        }
     }
-
 }

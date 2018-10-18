@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Legs of Speed
   icon: {fileID: 0}
+  preFab: {fileID: 1438675979016594, guid: 11b623f69545c234a8175510aaf858cc, type: 2}
   equipmentSlot: 2
-  isDefaultItem: 0
   isEquipment: 1
   isConsumable: 0
   armourModifier: 2
   damageModifier: 3
+  speedModifier: 4

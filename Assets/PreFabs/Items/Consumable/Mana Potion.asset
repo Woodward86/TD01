@@ -13,9 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Mana Potion
   icon: {fileID: 21300000, guid: 1985a08a10927794380987d6c7a13c6d, type: 3}
+  preFab: {fileID: 1970880911008060, guid: a773fe1d6d7944f4ebfc28323eb59b88, type: 2}
   equipmentSlot: 5
-  isDefaultItem: 0
   isEquipment: 0
   isConsumable: 1
+  isStackable: 1
   armourModifier: 0
   damageModifier: 0
+  speedModifier: 0

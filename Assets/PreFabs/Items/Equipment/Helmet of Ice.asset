@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Helmet of Ice
   icon: {fileID: 0}
+  preFab: {fileID: 1163864379053248, guid: 38ac99ea28e089d4ca7cfeb2b3fefcd0, type: 2}
   equipmentSlot: 0
-  isDefaultItem: 0
   isEquipment: 1
   isConsumable: 0
   armourModifier: 2
-  damageModifier: 0
+  damageModifier: 1
+  speedModifier: 0

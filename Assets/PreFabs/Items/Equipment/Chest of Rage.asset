@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Chest of Rage
   icon: {fileID: 0}
+  preFab: {fileID: 1614753147852020, guid: d01ee3822356eda4a8db2f9974a13669, type: 2}
   equipmentSlot: 1
-  isDefaultItem: 0
   isEquipment: 1
   isConsumable: 0
-  armourModifier: 2
+  armourModifier: 0
   damageModifier: 3
+  speedModifier: 0

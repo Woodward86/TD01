@@ -3,13 +3,13 @@
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(PlayerStats_Temp))]
+[RequireComponent(typeof(PlayerStats))]
 public class PlayerController_Temp : MonoBehaviour
 {
     //setup
     protected Rigidbody rb;
     protected Collider coll;
-    protected PlayerStats_Temp stats;
+    protected PlayerStats stats;
 
     //camera setup
     Transform mainCamera;
@@ -27,7 +27,7 @@ public class PlayerController_Temp : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         coll = GetComponent<Collider>();
-        stats = GetComponent<PlayerStats_Temp>();
+        stats = GetComponent<PlayerStats>();
         mainCamera = Camera.main.transform;
 
         interactColl.enabled = false;
@@ -42,18 +42,18 @@ public class PlayerController_Temp : MonoBehaviour
         Vector3 moveHorizontal = transform.right * xMove;
         Vector3 moveVertical = transform.forward * zMove;
 
-        velocity = (moveHorizontal + moveVertical).normalized * stats.walkSpeed;
+        velocity = (moveHorizontal + moveVertical).normalized * stats.walkSpeed.GetValue();
 
         if (velocity != Vector3.zero)
         {
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Interact();
         }
-        else if (!Input.GetKeyDown(KeyCode.X))
+        else if (!Input.GetKeyDown(KeyCode.E))
         {
             interactColl.enabled = false;
         }

@@ -23,9 +23,8 @@ GameObject:
   - component: {fileID: 136115503070164046}
   - component: {fileID: 136769391452355534}
   - component: {fileID: 114098639161490452}
-  - component: {fileID: 114559199105581760}
   - component: {fileID: 114790821016373270}
-  - component: {fileID: 114918900209718372}
+  - component: {fileID: 114060649498911550}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -134,6 +133,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &114060649498911550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049942073834482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b763c806c164b3e4f8e94bc1790303d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage:
+    baseValue: 5
+  armour:
+    baseValue: 0
+  walkSpeed:
+    baseValue: 6
 --- !u!114 &114098639161490452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,22 +163,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSmooth: 1
-  cameraOffset: {x: 0, y: 15, z: -7}
+  cameraOffset: {x: 0, y: 35, z: -17}
   cameraRotation: {x: 0.43, y: 0, z: 0, w: 0.7071068}
   interactColl: {fileID: 136769391452355534}
---- !u!114 &114559199105581760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1049942073834482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79d9b8d58fc46bf4eb6ecc651e42b381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  walkSpeed: 6
 --- !u!114 &114790821016373270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,20 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867deaca5debd4546891ee7d058835ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  space: 5
-  items: []
---- !u!114 &114918900209718372
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1049942073834482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c0719417d04850488beddcec7cc064d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipmentManager: {fileID: 114918900209718372}
+  consumables: []
   currentEquipment: []
 --- !u!136 &136115503070164046
 CapsuleCollider:

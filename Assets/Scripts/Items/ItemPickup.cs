@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 
-
 public class ItemPickup : Interactable
 {
-
     public Item item;
     private Inventory inventory;
 
@@ -28,5 +26,4 @@ public class ItemPickup : Interactable
             Destroy(gameObject);
         }
     }
-
 }

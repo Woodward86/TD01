@@ -13,9 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Health Potion
   icon: {fileID: 21300000, guid: 1985a08a10927794380987d6c7a13c6d, type: 3}
+  preFab: {fileID: 1594665981967066, guid: 53c32fdba09aeb947848ba0ca1f841af, type: 2}
   equipmentSlot: 5
-  isDefaultItem: 0
   isEquipment: 0
   isConsumable: 1
+  isStackable: 1
   armourModifier: 0
   damageModifier: 0
+  speedModifier: 0
