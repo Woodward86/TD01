@@ -9,6 +9,7 @@ public class PlayerController_Temp : MonoBehaviour
     //setup
     protected Rigidbody rb;
     protected Collider coll;
+    protected Inventory inventory;
     protected PlayerStats stats;
 
     //camera setup
@@ -27,6 +28,7 @@ public class PlayerController_Temp : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         coll = GetComponent<Collider>();
+        inventory = GetComponent<Inventory>();
         stats = GetComponent<PlayerStats>();
         mainCamera = Camera.main.transform;
 
@@ -57,7 +59,30 @@ public class PlayerController_Temp : MonoBehaviour
         {
             interactColl.enabled = false;
         }
-                
+        
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            inventory.consumables[0].Use(stats);
+            inventory.Remove(inventory.consumables[0]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            inventory.consumables[1].Use(stats);
+            inventory.Remove(inventory.consumables[1]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            inventory.consumables[2].Use(stats);
+            inventory.Remove(inventory.consumables[2]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            inventory.consumables[3].Use(stats);
+            inventory.Remove(inventory.consumables[3]);
+        }
+
+
         MoveCamera();
 
     }

@@ -9,8 +9,7 @@ public class Inventory : MonoBehaviour
     public delegate void OnEquipmentChanged(Item newItem, Item oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
-    //public int space = 9;
-
+    //TODO: Need to change this over into an array so the indexes don't change.
     public List<Item> consumables = new List<Item>();
 
     public Item[] currentEquipment;
