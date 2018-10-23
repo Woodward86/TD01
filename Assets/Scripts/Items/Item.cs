@@ -36,3 +36,4 @@ public class Item : ScriptableObject
 }
 
 public enum EquipmentSlotTag { Head, Chest, Legs, Feet, Weapon }
+

@@ -4,6 +4,7 @@ public class ItemPickup : Interactable
 {
     public Item item;
     private Inventory inventory;
+    
 
     private void OnTriggerEnter(Collider other)
     {

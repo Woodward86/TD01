@@ -21,8 +21,11 @@ public class PlayerController_Temp : MonoBehaviour
     //movement
     private Vector3 velocity = Vector3.zero;
 
+    //TODO: Interact collider should probably be replaced with a box collider on the from of the character
     //interaction collider
     public Collider interactColl;
+
+
 
     void Start()
     {
@@ -51,6 +54,7 @@ public class PlayerController_Temp : MonoBehaviour
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }
 
+        //TODO: All the KeyCodes will need to be replaced with variables to be ready for multi player
         if (Input.GetKeyDown(KeyCode.E))
         {
             Interact();
@@ -60,7 +64,6 @@ public class PlayerController_Temp : MonoBehaviour
             interactColl.enabled = false;
         }
         
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             inventory.consumables[0].Use(stats);
@@ -81,10 +84,7 @@ public class PlayerController_Temp : MonoBehaviour
             inventory.consumables[3].Use(stats);
             inventory.Remove(inventory.consumables[3]);
         }
-
-
         MoveCamera();
-
     }
 
 
