@@ -21,7 +21,10 @@ public class PlayerController_Temp : MonoBehaviour
     //movement
     private Vector3 velocity = Vector3.zero;
 
-    //TODO: Interact collider should probably be replaced with a box collider on the from of the character
+    //aim
+    public Transform ld;
+
+    //TODO: Interact collider should probably be replaced with a box collider on the front of the character
     //interaction collider
     public Collider interactColl;
 
@@ -54,6 +57,9 @@ public class PlayerController_Temp : MonoBehaviour
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }
 
+        //TODO: Will need to be fixed to work with multiple cameras
+        MouseLook();
+
         //TODO: All the KeyCodes will need to be replaced with variables to be ready for multi player
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -84,10 +90,11 @@ public class PlayerController_Temp : MonoBehaviour
             inventory.consumables[3].Use(stats);
             inventory.Remove(inventory.consumables[3]);
         }
+
         MoveCamera();
     }
 
-
+    //TODO: will need to be fixed to work with multiple cameras
     void MoveCamera()
     {
         mainCamera.position += (transform.position + cameraOffset - mainCamera.position) * cameraSmooth * Time.deltaTime;
@@ -100,8 +107,32 @@ public class PlayerController_Temp : MonoBehaviour
         interactColl.enabled = true;
     }
 
+    //TODO: decide which of these mouse looks to use
+    void MouseLook()
+    {
+        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
 
+        if (groundPlane.Raycast(cameraRay, out rayLength))
+        {
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
 
+            ld.transform.LookAt(new Vector3(pointToLook.x, ld.transform.position.y, pointToLook.z));
+        }
 
+        // below is the direct rotation of the character
+        //if (groundPlane.Raycast(cameraRay, out rayLength))
+        //{
+        //    Vector3 pointToLook = cameraRay.GetPoint(rayLength) - transform.position;
+        //    pointToLook.y = 0f;
+        //    Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
+
+        //    Quaternion newRotation = Quaternion.LookRotation(pointToLook);
+
+        //    rb.MoveRotation(newRotation);
+        //}
+    }
 
 }
