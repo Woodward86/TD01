@@ -20,11 +20,12 @@ public class PlayerController_Temp : MonoBehaviour
 
     //movement
     private Vector3 velocity = Vector3.zero;
+    public Transform pg;
 
     //aim
     public Transform ld;
 
-    //TODO: Interact collider should probably be replaced with a box collider on the front of the character
+    //TODO: Interact collider should probably be replaced with a box collider on the front of the character geo
     //interaction collider
     public Collider interactColl;
 
@@ -56,9 +57,19 @@ public class PlayerController_Temp : MonoBehaviour
         {
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }
+        if (velocity != Vector3.zero)
+        {
+            CharacterFacingDirection(xMove, zMove);
+        }
+        else
+        {
+            MouseLook();
+        }
+
+        //CharacterFacingDirection(xMove, zMove);
 
         //TODO: Will need to be fixed to work with multiple cameras
-        MouseLook();
+        //MouseLook();
 
         //TODO: All the KeyCodes will need to be replaced with variables to be ready for multi player
         if (Input.GetKeyDown(KeyCode.E))
@@ -107,7 +118,28 @@ public class PlayerController_Temp : MonoBehaviour
         interactColl.enabled = true;
     }
 
-    //TODO: decide which of these mouse looks to use
+    //TODO: Will need to decide if we want to do 45 angles
+    void CharacterFacingDirection(float xMove, float zMove)
+    {
+        if (xMove > 0)
+        {
+            pg.rotation = Quaternion.Euler(0, 90, 0);
+        }
+        if (xMove < 0)
+        {
+            pg.rotation = Quaternion.Euler(0, 270, 0);
+        }
+        if (zMove > 0)
+        {
+            pg.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (zMove < 0)
+        {
+            pg.rotation = Quaternion.Euler(0, 180, 0);
+        }
+    }
+
+
     void MouseLook()
     {
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -119,20 +151,7 @@ public class PlayerController_Temp : MonoBehaviour
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
 
-            ld.transform.LookAt(new Vector3(pointToLook.x, ld.transform.position.y, pointToLook.z));
+            pg.transform.LookAt(new Vector3(pointToLook.x, pg.transform.position.y, pointToLook.z));
         }
-
-        // below is the direct rotation of the character
-        //if (groundPlane.Raycast(cameraRay, out rayLength))
-        //{
-        //    Vector3 pointToLook = cameraRay.GetPoint(rayLength) - transform.position;
-        //    pointToLook.y = 0f;
-        //    Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
-
-        //    Quaternion newRotation = Quaternion.LookRotation(pointToLook);
-
-        //    rb.MoveRotation(newRotation);
-        //}
     }
-
 }
