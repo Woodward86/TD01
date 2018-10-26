@@ -18,17 +18,19 @@ public class PlayerController_Temp : MonoBehaviour
     public Vector3 cameraOffset;
     public Quaternion cameraRotation;
 
+    //input type
+    public bool useController;
+
     //movement
     private Vector3 velocity = Vector3.zero;
     public Transform pg;
 
     //aim
-    public Transform ld;
+    public Transform fd;
 
-    //TODO: Interact collider should probably be replaced with a box collider on the front of the character geo
+    //TODO: Interact collider should probably be replaced with a box collider on the front of the character geometry
     //interaction collider
     public Collider interactColl;
-
 
 
     void Start()
@@ -57,19 +59,10 @@ public class PlayerController_Temp : MonoBehaviour
         {
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }
-        if (velocity != Vector3.zero)
-        {
-            CharacterFacingDirection(xMove, zMove);
-        }
-        else
-        {
-            MouseLook();
-        }
-
-        //CharacterFacingDirection(xMove, zMove);
 
         //TODO: Will need to be fixed to work with multiple cameras
-        //MouseLook();
+        TwinStick();
+        //AllLeftStick(xMove, zMove);
 
         //TODO: All the KeyCodes will need to be replaced with variables to be ready for multi player
         if (Input.GetKeyDown(KeyCode.E))
@@ -118,40 +111,61 @@ public class PlayerController_Temp : MonoBehaviour
         interactColl.enabled = true;
     }
 
-    //TODO: Will need to decide if we want to do 45 angles
-    void CharacterFacingDirection(float xMove, float zMove)
+
+    void TwinStick()
     {
-        if (xMove > 0)
+        if (!useController)
         {
-            pg.rotation = Quaternion.Euler(0, 90, 0);
+            Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+            float rayLength;
+
+            if (groundPlane.Raycast(cameraRay, out rayLength))
+            {
+                Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+                Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
+
+                fd.transform.LookAt(new Vector3(pointToLook.x, fd.transform.position.y, pointToLook.z));
+                pg.transform.LookAt(new Vector3(pointToLook.x, pg.transform.position.y, pointToLook.z));
+            }
         }
-        if (xMove < 0)
+        else
         {
-            pg.rotation = Quaternion.Euler(0, 270, 0);
+            Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("RHorizontal") + Vector3.forward * Input.GetAxisRaw("RVertical");
+            if (playerDirection.sqrMagnitude > 0.0f)
+            {
+                fd.transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
+                pg.transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
+            }
         }
-        if (zMove > 0)
-        {
-            pg.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        if (zMove < 0)
-        {
-            pg.rotation = Quaternion.Euler(0, 180, 0);
-        }
+
     }
 
 
-    void MouseLook()
+    void AllLeftStick(float xMove, float zMove)
     {
-        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        float rayLength;
-
-        if (groundPlane.Raycast(cameraRay, out rayLength))
+        Vector3 playerDirection = Vector3.right * xMove + Vector3.forward * zMove;
+        if (playerDirection.sqrMagnitude > 0.0f)
         {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
+            fd.transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
+        }
 
-            pg.transform.LookAt(new Vector3(pointToLook.x, pg.transform.position.y, pointToLook.z));
+        //TODO: The condition between -45 and 45 doesn't seem to work quite right
+        if (fd.transform.rotation.y >= -45f && fd.transform.rotation.eulerAngles.y <= 45f)
+        {
+            pg.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (fd.transform.rotation.eulerAngles.y >= 45f && fd.transform.rotation.eulerAngles.y <= 135f)
+        {
+            pg.rotation = Quaternion.Euler(0, 90, 0);
+        }
+        if (fd.transform.rotation.eulerAngles.y >= 135f && fd.transform.rotation.eulerAngles.y <= 225f)
+        {
+            pg.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        if (fd.transform.rotation.eulerAngles.y >= 225f && fd.transform.rotation.eulerAngles.y <= 315f)
+        {
+            pg.rotation = Quaternion.Euler(0, 270, 0);
         }
     }
 }
