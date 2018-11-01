@@ -67,7 +67,7 @@ public class EquipmentManagerUI : MonoBehaviour
         }
     }
 
-
+    //TODO: Need to build in Stackable logic and a UI counter for items that stack
     void UpdateConsumbaleSlots()
     {
         for (int i = 0; i < cSlots.Length; i++)

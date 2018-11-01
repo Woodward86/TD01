@@ -3,8 +3,9 @@
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
 public class Item : ScriptableObject
 {
-    //TODO: equipmentSlot option should only be shown if isEquipment is on
+    //TODO: EquipmentSlot option should only be shown if isEquipment is on
     //TODO: isStackable should only be shown if isConsumable is on
+    //TODO: Consumable items should probably get a duration
     new public string name = "New Item";
     public Sprite icon = null;
     public GameObject preFab;
@@ -24,7 +25,7 @@ public class Item : ScriptableObject
     {
         Debug.Log("Using " + name);
 
-        //TODO: all of this logic should probably be moved to PlayerStats, subscribing to the OnItemChanged() delegate from Inventory.
+        //TODO: All of this logic should probably be moved to PlayerStats, subscribing to the OnItemChanged() delegate from Inventory.
         if (target != null)
         {
             target.walkSpeed.AddModifier(speedModifier);
@@ -33,6 +34,7 @@ public class Item : ScriptableObject
             target.maxHealth += healthModifier;
         }
     }
+
 }
 
 public enum EquipmentSlotTag { Head, Chest, Legs, Feet, Weapon }

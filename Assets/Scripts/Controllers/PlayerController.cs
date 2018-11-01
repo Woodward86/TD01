@@ -4,7 +4,7 @@
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerStats))]
-public class PlayerController_Temp : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     //setup
     protected Rigidbody rb;
@@ -12,23 +12,19 @@ public class PlayerController_Temp : MonoBehaviour
     protected Inventory inventory;
     protected PlayerStats stats;
 
-    //camera setup
-    Transform mainCamera;
-    public float cameraSmooth = 1.0f;
-    public Vector3 cameraOffset;
-    public Quaternion cameraRotation;
-
     //input type
     public bool useController;
 
     //movement
     private Vector3 velocity = Vector3.zero;
-    public Transform pg;
 
     //aim
     public Transform fd;
+    public Transform pg;
 
-    //TODO: Interact collider should probably be replaced with a box collider on the front of the character geometry
+    //temp attack
+    public GameObject tw;
+
     //interaction collider
     public Collider interactColl;
 
@@ -39,7 +35,6 @@ public class PlayerController_Temp : MonoBehaviour
         coll = GetComponent<Collider>();
         inventory = GetComponent<Inventory>();
         stats = GetComponent<PlayerStats>();
-        mainCamera = Camera.main.transform;
 
         interactColl.enabled = false;
     }
@@ -63,17 +58,19 @@ public class PlayerController_Temp : MonoBehaviour
         //TODO: Will need to be fixed to work with multiple cameras
         TwinStick();
         //AllLeftStick(xMove, zMove);
-
+        
         //TODO: All the KeyCodes will need to be replaced with variables to be ready for multi player
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
             Interact();
         }
-        else if (!Input.GetKeyDown(KeyCode.E))
+        else if (!Input.GetKey(KeyCode.E))
         {
             interactColl.enabled = false;
         }
         
+        //use consumables
+        //TODO: Should move the Remove() logic onto the Item class with a reference to the inventory the item lives in
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             inventory.consumables[0].Use(stats);
@@ -95,14 +92,7 @@ public class PlayerController_Temp : MonoBehaviour
             inventory.Remove(inventory.consumables[3]);
         }
 
-        MoveCamera();
-    }
 
-    //TODO: will need to be fixed to work with multiple cameras
-    void MoveCamera()
-    {
-        mainCamera.position += (transform.position + cameraOffset - mainCamera.position) * cameraSmooth * Time.deltaTime;
-        mainCamera.transform.rotation = cameraRotation;
     }
 
 
@@ -129,6 +119,7 @@ public class PlayerController_Temp : MonoBehaviour
                 pg.transform.LookAt(new Vector3(pointToLook.x, pg.transform.position.y, pointToLook.z));
             }
         }
+        //TODO: This all needs to be fine tuned a lot, right now the right control still feels bad, and to snappy
         else
         {
             Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("RHorizontal") + Vector3.forward * Input.GetAxisRaw("RVertical");

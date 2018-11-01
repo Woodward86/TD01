@@ -13,10 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Chest of Protection
   icon: {fileID: 21300000, guid: 1985a08a10927794380987d6c7a13c6d, type: 3}
-  preFab: {fileID: 1329094156139162, guid: d529555fcbb851846bf562ce197e0352, type: 2}
+  preFab: {fileID: 1614753147852020, guid: 529228bfa4fe04947afcb99d7317e0c3, type: 2}
   equipmentSlot: 1
   isEquipment: 1
   isConsumable: 0
+  isStackable: 0
+  healthModifier: 0
   armourModifier: 5
   damageModifier: 0
   speedModifier: 0

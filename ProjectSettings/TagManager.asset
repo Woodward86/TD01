@@ -7,6 +7,7 @@ TagManager:
   - Spawn Point
   - Rooms
   - FloorTile
+  - Weapon
   layers:
   - Default
   - TransparentFX

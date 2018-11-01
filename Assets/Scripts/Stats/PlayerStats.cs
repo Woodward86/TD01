@@ -29,4 +29,15 @@ public class PlayerStats : CharacterStats
             walkSpeed.RemoveModifier(oldItem.speedModifier);
         }
     }
+
+    //TODO: Not sure if this is the way we should kill the player, this will force a start from scratch
+    public override void Die()
+    {
+        base.Die();
+
+        //TODO: Add something special for Player death
+
+        Destroy(gameObject);
+    }
+
 }

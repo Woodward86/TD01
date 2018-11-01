@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
         currentEquipment = new Item[numSlots];
     }
 
-
+    //TODO: Need to build in isStackable Logic
     public bool Add(Item item)
     {
         if (item.isConsumable)
@@ -76,8 +76,8 @@ public class Inventory : MonoBehaviour
         if (currentEquipment[slotIndex] != null)
         {
             Item oldItem = currentEquipment[slotIndex];
-
-            Instantiate(oldItem.preFab, transform.position, Quaternion.identity);
+            //TODO: Finish this coroutine
+            StartCoroutine(DropOldItem(oldItem));
             Debug.Log("Dropping " + oldItem);
 
             currentEquipment[slotIndex] = null;
@@ -87,5 +87,14 @@ public class Inventory : MonoBehaviour
                 onEquipmentChanged.Invoke(null, oldItem);
             }
         }
+    }
+
+
+    private IEnumerator DropOldItem(Item oldItem)
+    {
+        yield return new WaitForSeconds(.5f);
+        //TODO: Try to figure out a way to remove find calls
+        Debug.Log(GameObject.Find(oldItem.name));
+        GameObject.Find(oldItem.name).transform.parent = null;
     }
 }

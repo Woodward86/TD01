@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 
-//TODO: When player is closer then the radius display item name on screen or something
 public class Interactable : MonoBehaviour
 {
     public float radius = 3f;
+
+    public virtual void Interact()
+    {
+        Debug.Log("Interacting with " + transform.name);
+    }
+
 
     private void OnDrawGizmosSelected()
     {

@@ -17,6 +17,8 @@ MonoBehaviour:
   equipmentSlot: 4
   isEquipment: 1
   isConsumable: 0
+  isStackable: 0
+  healthModifier: 0
   armourModifier: 0
   damageModifier: 4
   speedModifier: 0
