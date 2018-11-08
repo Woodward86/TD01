@@ -22,9 +22,6 @@ public class PlayerController : MonoBehaviour
     public Transform fd;
     public Transform pg;
 
-    //temp attack
-    public GameObject tw;
-
     //interaction collider
     public Collider interactColl;
 
@@ -39,7 +36,7 @@ public class PlayerController : MonoBehaviour
         interactColl.enabled = false;
     }
 
-
+    //TODO: need to refactor this
     void Update()
     {
         float xMove = Input.GetAxisRaw("Horizontal");
@@ -58,7 +55,30 @@ public class PlayerController : MonoBehaviour
         //TODO: Will need to be fixed to work with multiple cameras
         TwinStick();
         //AllLeftStick(xMove, zMove);
-        
+
+        // Weapon attack
+        if (inventory.currentEquipment[4] != null)
+        {
+            //TODO: This Find() call needs to replaced with something more performant
+            GameObject weaponGO = GameObject.Find(inventory.currentEquipment[4].name);
+            Weapon weapon = weaponGO.GetComponent<Weapon>();
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                // Do ranged attack
+                if (inventory.currentEquipment[4].isRanged)
+                {
+                    weapon.Shoot();
+                }
+                // Do melee attack
+                else
+                {
+                    weapon.Strike();
+                }
+            }
+        }
+
+
         //TODO: All the KeyCodes will need to be replaced with variables to be ready for multi player
         if (Input.GetKey(KeyCode.E))
         {
@@ -70,7 +90,6 @@ public class PlayerController : MonoBehaviour
         }
         
         //use consumables
-        //TODO: Should move the Remove() logic onto the Item class with a reference to the inventory the item lives in
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             inventory.consumables[0].Use(stats);
@@ -91,8 +110,6 @@ public class PlayerController : MonoBehaviour
             inventory.consumables[3].Use(stats);
             inventory.Remove(inventory.consumables[3]);
         }
-
-
     }
 
 

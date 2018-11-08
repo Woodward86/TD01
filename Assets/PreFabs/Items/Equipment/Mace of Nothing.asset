@@ -9,16 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b1e04ffa586f9c4c8409dc66673a4db, type: 3}
-  m_Name: Mace of Bashing
+  m_Name: Mace of Nothing
   m_EditorClassIdentifier: 
-  name: Mace of Bashing
+  name: Mace of Nothing
   icon: {fileID: 0}
-  preFab: {fileID: 1023491438395212, guid: cb79fe9bede452b4eadf67e1c7275d60, type: 2}
+  preFab: {fileID: 1023491438395212, guid: ef2bcc4a6b246214a998956fa10f465f, type: 2}
   equipmentSlot: 4
   isEquipment: 1
   isConsumable: 0
   isStackable: 0
   healthModifier: 0
   armourModifier: 0
-  damageModifier: 4
+  damageModifier: 0
   speedModifier: 0

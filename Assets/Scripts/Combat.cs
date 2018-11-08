@@ -17,7 +17,8 @@ public class Combat : MonoBehaviour
         if (weapon.CompareTag("Weapon"))
         {
             attacker = weapon.GetComponentInParent<Combat>();
-            if (attacker != null)
+            //Debug.Log(attacker);
+            if (attacker != null && attacker.name != gameObject.name)
             {
                 attacker.Attack(myStats);
             }

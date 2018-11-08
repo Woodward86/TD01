@@ -68,6 +68,12 @@ public class Inventory : MonoBehaviour
         }
 
         currentEquipment[slotIndex] = newItem;
+
+        if (newItem.equipmentSlot == EquipmentSlotTag.Weapon)
+        {
+            //TODO: Replace Find() call with something more performant
+            GameObject.Find(newItem.name).GetComponent<Collider>().isTrigger = true;
+        }
     }
 
 
@@ -76,12 +82,9 @@ public class Inventory : MonoBehaviour
         if (currentEquipment[slotIndex] != null)
         {
             Item oldItem = currentEquipment[slotIndex];
-            //TODO: Finish this coroutine
             StartCoroutine(DropOldItem(oldItem));
             Debug.Log("Dropping " + oldItem);
-
             currentEquipment[slotIndex] = null;
-
             if (onEquipmentChanged != null)
             {
                 onEquipmentChanged.Invoke(null, oldItem);
@@ -93,8 +96,11 @@ public class Inventory : MonoBehaviour
     private IEnumerator DropOldItem(Item oldItem)
     {
         yield return new WaitForSeconds(.5f);
-        //TODO: Try to figure out a way to remove find calls
-        Debug.Log(GameObject.Find(oldItem.name));
+        //TODO: Replace Find() calls with something more performant
         GameObject.Find(oldItem.name).transform.parent = null;
+        if (oldItem.equipmentSlot == EquipmentSlotTag.Weapon)
+        {
+            GameObject.Find(oldItem.name).GetComponent<Collider>().isTrigger = false;
+        }
     }
 }

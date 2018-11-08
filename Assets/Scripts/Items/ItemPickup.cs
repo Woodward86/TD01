@@ -24,28 +24,16 @@ public class ItemPickup : Interactable
 
         if (wasPickedUp && item.isEquipment)
         {
+            //TODO: Will need to have locaters so the equipment goes to the right places on the body
             gameObject.transform.position = player.transform.position;
             //TODO: Need to find a more efficient way of doing these searches (look into singleton patterns)
+            //TODO: Also will need to replace "Player_Geo" with name of final parent decision
             gameObject.transform.rotation = GameObject.Find("Player_Geo").transform.rotation;
             gameObject.transform.parent = GameObject.Find("Player_Geo").transform;
         }
         if (wasPickedUp && item.isConsumable)
         {
             Destroy(gameObject);
-        }
-    }
-
-    //TODO: This logic should be somewhere else
-    public void Update()
-    {
-        if (Input.GetButton("Fire1"))
-        {
-            Debug.Log("Attack pressed.");
-            item.preFab.transform.position = Vector3.forward * 2f;
-        }
-        else
-        {
-            item.preFab.transform.localPosition = Vector3.zero;
         }
     }
 }

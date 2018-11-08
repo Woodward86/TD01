@@ -8,18 +8,17 @@ public class Item : ScriptableObject
     //TODO: Consumable items should probably get a duration
     new public string name = "New Item";
     public Sprite icon = null;
-    public GameObject preFab;
     public EquipmentSlotTag equipmentSlot;
 
     public bool isEquipment = false;
     public bool isConsumable = false;
     public bool isStackable = false;
+    public bool isRanged = false;
 
     public int healthModifier;
     public int armourModifier;
     public int damageModifier;
     public int speedModifier;
-
 
     public void Use(PlayerStats target)
     {
