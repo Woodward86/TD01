@@ -125,5 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  projectileLifeTime: 3
+  projectileLifeTime: 1.5
   rb: {fileID: 54134390579423446}

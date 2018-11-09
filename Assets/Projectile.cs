@@ -4,7 +4,8 @@ public class Projectile : MonoBehaviour
 {
     //TODO: Need to add a bullet life time
     public float speed = 20f;
-    public float projectileLifeTime = 3f;
+    public float projectileLifeTime = 1.5f;
+    private float projectileLifeCounter;
     public Rigidbody rb;
 
 	void Start ()
@@ -13,13 +14,19 @@ public class Projectile : MonoBehaviour
 	}
 
 
-    //TODO: Need to destroy the bullet when its life time has run out
     private void OnTriggerEnter(Collider hitInfo)
     {
         Debug.Log(hitInfo.name);
         Destroy(gameObject);
     }
 
-    
 
+    public void Update()
+    {
+        projectileLifeCounter += Time.deltaTime;
+        if (projectileLifeCounter >= projectileLifeTime)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
