@@ -2,7 +2,6 @@
 
 public class Projectile : MonoBehaviour
 {
-    //TODO: Need to add a bullet life time
     public float speed = 20f;
     public float projectileLifeTime = 1.5f;
     private float projectileLifeCounter;
